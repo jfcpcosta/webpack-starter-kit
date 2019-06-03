@@ -1,0 +1,25 @@
+$bg: #363636;
+$font: sans-serif;
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: $bg;
+    font-family: $font;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h1 {
+        color: #e1e1e1;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+    }
+}

@@ -1,0 +1,7 @@
+# Dependencies folder
+node_modules/
+
+# Build folder
+build/
+
+yarn.lock
