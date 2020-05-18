@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.ts',
+    devtool: 'inline-source-map',
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
     watch: true,
@@ -20,19 +21,22 @@ module.exports = {
             }]
         }, {
             test: /\.(s*)css$/,
-            use: [
-                "style-loader",
-                "css-loader",
-                "sass-loader"
-            ]
+            use: ["style-loader", "css-loader", "sass-loader"]
         }, {
-            test: /\.js$/,
+            test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/,
             use: ['babel-loader']
         }, {
+            test: /\.tsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            use: ['babel-loader']
+          }, {
             test: /\.(png|svg|jpg|gif|jpeg)$/,
             use: ['file-loader']
         }]
+    },
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js' ],
     },
     plugins: [
         new HtmlWebpackPlugin({
