@@ -3,5 +3,6 @@ node_modules/
 
 # Build folder
 build/
+dist/
 
 yarn.lock
