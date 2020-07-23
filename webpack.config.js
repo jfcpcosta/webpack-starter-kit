@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: ['@babel/polyfill', './src/index.ts'],
     devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),

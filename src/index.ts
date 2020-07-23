@@ -1,9 +1,10 @@
 import './styles/main.scss'
 
-import { greeting } from './greeting'
-import Router, { RouterMode } from './router';
+import Router, { RouterMode } from './core/router';
+import { About } from './pages/about';
+import { Home } from './pages/home';
 
-const content = document.querySelector('code#message');
+const root = document.querySelector('#root');
 
 const router = new Router({
     mode: RouterMode.HASH,
@@ -11,9 +12,9 @@ const router = new Router({
 });
 
 router
-  .add(/about/, () => content.textContent = 'welcome in about page')
-  .add(/products\/(.*)\/specification\/(.*)/, (id, specification) => content.textContent = `products: ${id} specification: ${specification}`)
-  .add('', () => content.textContent = greeting('John Doe'));
+  .add(/about/, () => new About(root).render())
+  // .add(/products\/(.*)\/specification\/(.*)/, (id, specification) => content.textContent = `products: ${id} specification: ${specification}`)
+  .add('', () => new Home(root).render());
 
 document.querySelectorAll('a').forEach(link => {
     router.navigate(link.href);
